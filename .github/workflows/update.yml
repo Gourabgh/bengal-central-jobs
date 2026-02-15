@@ -1,0 +1,35 @@
+name: Daily Job Update
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Runs every 2 hours
+  workflow_dispatch:      # Allows manual click to run
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Libraries
+        run: pip install -r requirements.txt
+
+      - name: Run Script
+        run: python update_jobs.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "JobBot"
+          git config --global user.email "bot@noreply.github.com"
+          git add index.html
+          git commit -m "Auto-update jobs" || echo "No changes to commit"
+          git push
