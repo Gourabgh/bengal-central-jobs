@@ -4,44 +4,61 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WB & Central Job Alerts</title>
+        <title>Sarkari Job Archive</title>
         <style>
-            body { font-family: sans-serif; background: #f4f6f8; margin: 0; padding: 20px; }
-            .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-            h1 { text-align: center; color: #2c3e50; }
-            .update-time { text-align: center; color: #7f8c8d; font-size: 0.9rem; margin-bottom: 20px; }
-
+            body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; margin: 0; padding: 20px; }
+            .container { max-width: 900px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+            h1 { text-align: center; color: #333; }
+            .update-time { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 30px; }
+            
             .section-header { 
-                padding: 10px; color: white; margin-top: 20px; border-radius: 5px; 
-                font-weight: bold; letter-spacing: 1px;
+                padding: 12px 20px; color: white; margin-top: 30px; border-radius: 8px; 
+                font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px;
             }
-            .wb-header { background-color: #27ae60; } /* Green for WB */
-            .central-header { background-color: #2980b9; } /* Blue for Central */
-
+            .wb-header { background: #28a745; } 
+            .central-header { background: #007bff; }
+            .other-header { background: #6c757d; }
+            
             .job-item { 
-                border-bottom: 1px solid #eee; padding: 15px 0; display: flex; 
-                justify-content: space-between; align-items: center; 
+                border-bottom: 1px solid #f1f1f1; padding: 15px 10px; display: flex; 
+                justify-content: space-between; align-items: center; flex-wrap: wrap;
             }
-            .job-item:last-child { border-bottom: none; }
+            .job-info { flex: 1; }
+            .job-title { color: #343a40; font-weight: 600; text-decoration: none; font-size: 1rem; display: block; }
+            .job-title:hover { color: #0056b3; }
+            
+            .meta-row { font-size: 0.85rem; color: #666; margin-top: 4px; }
+            
+            .last-date-btn { 
+                background: #fff3cd; color: #856404; padding: 4px 10px; 
+                border-radius: 4px; border: 1px solid #ffeeba; font-size: 0.8rem; font-weight: bold;
+                margin-right: 10px;
+            }
+            
+            .new-badge { 
+                background: #ff4757; color: white; padding: 2px 6px; border-radius: 4px; 
+                font-size: 0.7rem; font-weight: bold; margin-left: 8px; vertical-align: middle;
+            }
 
-            .job-title { color: #34495e; font-weight: 600; text-decoration: none; font-size: 1.1rem; }
-            .job-title:hover { text-decoration: underline; color: #e67e22; }
             .apply-btn { 
-                background: #e67e22; color: white; padding: 5px 15px; text-decoration: none; 
-                border-radius: 20px; font-size: 0.9rem; white-space: nowrap; margin-left: 10px;
+                background: #343a40; color: white; padding: 6px 15px; text-decoration: none; 
+                border-radius: 5px; font-size: 0.85rem; white-space: nowrap;
             }
         </style>
     </head>
     <body>
         <div class="container">
-            <h1>🚀 Sarkari Job Tracker</h1>
-            <div class="update-time">Last Updated: 15 February 2026, 09:57 AM IST</div>
+            <h1>🚀 Job Archive & Tracker</h1>
+            <div class="update-time">Last Updated: 15 Feb 2026, 10:26 AM IST</div>
 
-            <div class="section-header wb-header">🟢 WEST BENGAL GOVT JOBS</div>
-            <div id="wb-list"><p style='padding:10px; color:#999;'>No new updates found today.</p></div>
+            <div class="section-header wb-header">🟢 West Bengal Jobs</div>
+            <div><p style='padding:15px; color:#999; text-align:center;'>No jobs found in database.</p></div>
 
-            <div class="section-header central-header">🔵 CENTRAL GOVT JOBS</div>
-            <div id="central-list"><p style='padding:10px; color:#999;'>No new updates found today.</p></div>
+            <div class="section-header central-header">🔵 Central Govt Jobs</div>
+            <div><p style='padding:15px; color:#999; text-align:center;'>No jobs found in database.</p></div>
+
+            <div class="section-header other-header">⚪ Other Updates</div>
+            <div><p style='padding:15px; color:#999; text-align:center;'>No jobs found in database.</p></div>
         </div>
     </body>
     </html>
