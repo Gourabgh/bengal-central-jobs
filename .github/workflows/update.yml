@@ -1,9 +1,10 @@
-name: Daily Job Update
+name: Daily Job Sync
 
 on:
   schedule:
-    - cron: '0 */2 * * *' # Runs every 2 hours
-  workflow_dispatch:      # Allows manual click to run
+    # Runs at 03:30 UTC = 9:00 AM Indian Standard Time (IST)
+    - cron: '30 3 * * *'
+  workflow_dispatch: # Allows manual run
 
 permissions:
   contents: write
@@ -26,10 +27,11 @@ jobs:
       - name: Run Script
         run: python update_jobs.py
 
-      - name: Commit and Push
+      - name: Save Database & Website
         run: |
           git config --global user.name "JobBot"
           git config --global user.email "bot@noreply.github.com"
-          git add index.html
-          git commit -m "Auto-update jobs" || echo "No changes to commit"
+          git add index.html jobs.json
+          git commit -m "Daily Database Update" || echo "No changes to commit"
           git push
+          
